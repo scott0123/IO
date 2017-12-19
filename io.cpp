@@ -117,6 +117,37 @@ vector<string> string_vector_from_file_with_separator(const string &filename, ch
     return vec; 
 }
 
+vector<string> string_vector_from_file(const string &filename){
+
+    vector<string> vec;
+    ifstream in(filename);
+
+    string s;
+
+    cout << "Input (from file): " << endl;
+
+    while(true){
+        // get the next line
+        getline(in, s);
+        cout << s << endl;
+
+        // if line isnt empty, parse it
+        if(!s.empty()){
+
+            // initially the number is zero
+            vec.push_back("");
+            for(int i = 0; i < (int) s.length(); i++){
+                vec.back() += s[i];
+            }
+        } // finished parsing line
+
+        // if it reached the end break
+        if(in.eof()) break;
+    }
+
+    return vec; 
+}
+
 vector<vector<int> > int_matrix_from_file_with_separator(const string &filename, char separator){
 
     vector<vector<int> > matrix;

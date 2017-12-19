@@ -13,6 +13,7 @@ string readfile(const string &filename, int line);
 
 vector<int> int_vector_from_file_with_separator(const string &filename, char separator);
 vector<string> string_vector_from_file_with_separator(const string &filename, char separator);
+vector<string> string_vector_from_file(const string &filename);
 vector<vector<int> > int_matrix_from_file_with_separator(const string &filename, char separator);
 vector<vector<string> > string_matrix_from_file_with_separator(const string &filename, char separator);
 
