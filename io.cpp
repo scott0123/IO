@@ -169,19 +169,25 @@ vector<vector<int> > int_matrix_from_file_with_separator(const string &filename,
             vector<int> row;
             // initially the number is zero
             row.push_back(0);
+            bool is_neg = false;
             for(int i = 0; i < (int) s.length(); i++){
 
                 if(s[i] == separator){
+                    if(is_neg) row.back() = -row.back();
                     row.push_back(0);
+                    is_neg = false;
                     continue;
                 }
 
-                if(s[i] < '0' || s[i] > '9') continue;
+                if(s[i] == '-') is_neg = !is_neg;
 
-                row.back() *= 10;
-                row.back() += s[i] - '0';
+                if(s[i] < '0' || s[i] > '9'){
+                } else {
+                    row.back() *= 10;
+                    row.back() += s[i] - '0';
+                }
 
-                if(i == (int) s.length() - 1 && s[0] == '-'){
+                if(i == (int) s.length() - 1 && is_neg){
                     row.back() = -row.back();
                 }
             }
